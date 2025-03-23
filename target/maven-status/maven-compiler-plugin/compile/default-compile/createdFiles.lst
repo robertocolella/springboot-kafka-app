@@ -1,0 +1,6 @@
+com/example/SpringbootKafkaAppApplication.class
+com/example/service/KafkaProducerService.class
+com/example/model/Message.class
+com/example/config/KafkaConfig.class
+com/example/controller/KafkaController.class
+com/example/service/KafkaProducerService$1.class
