@@ -32,13 +32,13 @@ The Spring Boot Kafka application allows sending and receiving messages via Apac
 
 ## Configuration
 
-The application can be configured using the [application.properties](http://_vscodecontentref_/3) file located in the [resources](http://_vscodecontentref_/4) directory.
+The application can be configured using the `application.properties` file located in the [resources](http://_vscodecontentref_/2) directory.
 
 ## Project Structure
 
-- [java](http://_vscodecontentref_/5): Contains the main application code.
-- [resources](http://_vscodecontentref_/6): Contains configuration files.
-- [java](http://_vscodecontentref_/7): Contains test cases.
+- [java](http://_vscodecontentref_/3): Contains the main application code.
+- [resources](http://_vscodecontentref_/4): Contains configuration files.
+- [java](http://_vscodecontentref_/5): Contains test cases.
 
 ## Usage
 
@@ -61,12 +61,12 @@ The application can be configured using the [application.properties](http://_vsc
 
 1. **Produce messages to a topic with Docker:**
     ```sh
-    docker run --rm -it --network host wurstmeister/kafka:latest kafka-console-producer.sh --broker-list localhost:9092 --topic test
+    docker exec -it <container_id> kafka-console-producer.sh --broker-list localhost:9092 --topic test
     ```
 
 2. **Consume messages from a topic with Docker:**
     ```sh
-    docker run --rm -it --network host wurstmeister/kafka:latest kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+    docker exec -it <container_id> kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
     ```
 
 ## Docker Compose
@@ -117,17 +117,17 @@ To verify the messages on Kafka, you can use the following commands:
 
 1. **Start Kafka Console Consumer with Docker:**
     ```sh
-    docker run --rm -it --network host wurstmeister/kafka:latest kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+    docker exec -it <container_id> kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
     ```
 
 2. **Start Kafka Console Producer with Docker:**
     ```sh
-    docker run --rm -it --network host wurstmeister/kafka:latest kafka-console-producer.sh --broker-list localhost:9092 --topic test
+    docker exec -it <container_id> kafka-console-producer.sh --broker-list localhost:9092 --topic test
     ```
 
 ### Note
 
-- Assicurati di sostituire `<your-topic>` con il nome del tuo topic Kafka.
+- Assicurati di sostituire `<container_id>` con l'ID del container Docker in cui è in esecuzione Kafka.
 - Se stai usando Docker, il flag `--network host` permette al container Docker di connettersi alla rete del tuo host. Questo è utile se Kafka è in esecuzione sulla tua macchina locale.
 
 Questi comandi ti permetteranno di verificare i messaggi su Kafka sia utilizzando la CLI di Kafka che Docker.
